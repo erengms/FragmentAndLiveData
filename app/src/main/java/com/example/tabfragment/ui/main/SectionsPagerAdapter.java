@@ -18,7 +18,7 @@ import com.example.tabfragment.R;
  * one of the sections/tabs/pages.
  */
 public class SectionsPagerAdapter extends FragmentStateAdapter {
-    
+
     public SectionsPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }

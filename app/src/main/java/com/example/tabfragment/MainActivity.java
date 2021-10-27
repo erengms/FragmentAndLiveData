@@ -6,6 +6,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -43,12 +44,20 @@ public class MainActivity extends AppCompatActivity {
         //new
         ViewPager2 viewPager = binding.viewPager2;
         viewPager.setAdapter(sectionsPagerAdapter);
-        //new
-        new TabLayoutMediator(tabLayout, viewPager,
+
+        //new tab names lambda usage
+       /* new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText(TAB_TITLES[position])
-        ).attach();
+        ).attach();*/
 
-
+        //new Tab names
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText(TAB_TITLES[position]);
+            }
+        });
+        tabLayoutMediator.attach();
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
